@@ -20,4 +20,10 @@ public class UserController {
         //return userService.login(username, password);
         return "hello";
     }
+
+    @PostMapping("logout")
+    public String userLogout(/*@RequestParam String username, @RequestParam String password*/){
+        //return userService.login(username, password);
+        return "Logout!";
+    }
 }
