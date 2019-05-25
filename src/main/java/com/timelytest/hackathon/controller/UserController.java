@@ -1,5 +1,6 @@
 package com.timelytest.hackathon.controller;
 
+import com.timelytest.hackathon.entity.User;
 import com.timelytest.hackathon.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,5 +26,10 @@ public class UserController {
     public String userLogout(/*@RequestParam String username, @RequestParam String password*/){
         //return userService.login(username, password);
         return "Logout!";
+    }
+
+    @GetMapping("get")
+    public User getUser(){
+        return new User(123, "user", "pass");
     }
 }
