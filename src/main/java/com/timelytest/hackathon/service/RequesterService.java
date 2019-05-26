@@ -9,6 +9,7 @@ import java.util.List;
 @Service
 public interface RequesterService {
     String publish(InstructionPublishBean instructionPublishBean, String path);
-    String adopt(String email, int instructionId);
+    String adopt(int instructionId);
+    String cancel(int instructionId);
     List<Instruction> getRequesterInstructionList(String email);
 }
