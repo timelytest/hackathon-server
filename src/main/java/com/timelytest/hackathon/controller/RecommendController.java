@@ -49,6 +49,7 @@ public class RecommendController {
     }
 
     @PostMapping("/topResolvedQuestion")
+    // 返回最近得到回复解决的十个问题
     public List<Question> getLatestResolvedQuestionList(){
         return null;
     }
