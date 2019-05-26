@@ -4,4 +4,5 @@ import com.timelytest.hackathon.bean.RegisterBean;
 
 public interface UserService {
     String register(RegisterBean registerBean,String cardImageId);
+    String login(String email,String password);
 }

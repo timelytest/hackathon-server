@@ -50,4 +50,17 @@ public class UserServiceImpl implements UserService {
         }
         return "success";
     }
+
+    @Override
+    public String login(String email, String password) {
+        Optional<PasswordEntity> optionalPasswordEntity=passwordRepository.findByEmail(email);
+        if(!optionalPasswordEntity.isPresent()){
+            return "fail";
+        }else{
+            MD5Password md5Password=new MD5Password();
+            if(!optionalPasswordEntity.get().getPassword().equals(md5Password.getMD5(password)))
+                return "fail";
+        }
+        return "success";
+    }
 }
