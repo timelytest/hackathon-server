@@ -38,9 +38,6 @@ public class AnswerController {
 
     @PostMapping("/answer/list")
     // 查看所有回答过的问题
-    public List<Answer> getAnswerList(@RequestParam String email){
-
-        return new ArrayList<>();
     public List<Answer> getAnswerList(HttpSession session){
         String email = session.getAttribute("email").toString();
         return answerService.getAnswerList(email);
