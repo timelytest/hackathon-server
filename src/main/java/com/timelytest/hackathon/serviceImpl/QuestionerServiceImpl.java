@@ -86,9 +86,24 @@ public class QuestionerServiceImpl implements QuestionerService {
             }
             //问题完成并发放奖励
             Optional<Answer> answerOptional=answerRepository.findById(answerId);
+            if(!answerOptional.isPresent())
+                return Message.FAIL.toString();
+            answerOptional.get().setAccepted(true);//改状态
+            try {
+                answerRepository.save(answerOptional.get());
+            }catch (Exception e){
+                return Message.FAIL.toString();
+            }
             String email=answerOptional.get().getEmail();
             Optional<User> userOptional=userRepository.findByEmail(email);
-           // userOptional.get().setReward(questionOptional.get().getReward()+userOptional.get().getReward());
+            if(!userOptional.isPresent())
+                return Message.FAIL.toString();
+            userOptional.get().setReward(questionOptional.get().getReward()+userOptional.get().getReward());//加奖励
+            try{
+                userRepository.save(userOptional.get());
+            }catch (Exception e){
+                return Message.FAIL.toString();
+            }
 
         }
         return Message.SUCCESS.toString();

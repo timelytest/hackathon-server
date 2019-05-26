@@ -43,8 +43,7 @@ public class QuestionerController {
     @PostMapping("/adopt")
     // 采纳回答
     public String adopt(@RequestParam int questionId, @RequestParam  int answerId){
-
-        return null;
+        return questionerService.adopt(questionId,answerId);
     }
 
     @GetMapping("/list/publish")
