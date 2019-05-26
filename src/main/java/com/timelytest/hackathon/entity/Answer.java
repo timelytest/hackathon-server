@@ -18,14 +18,14 @@ public class Answer {
     // 回答详情
     private String content;
     // 回答日期
-    private Date date;
+    private String date;
     // 回答赞同数量
     private int agreeNumber;
 
     public Answer() {
     }
 
-    public Answer(int questionId, String email, boolean accepted, String content, Date date, int agreeNumber) {
+    public Answer(int questionId, String email, boolean accepted, String content, String date, int agreeNumber) {
         this.questionId = questionId;
         this.email = email;
         this.accepted = accepted;
@@ -74,11 +74,11 @@ public class Answer {
         this.content = content;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

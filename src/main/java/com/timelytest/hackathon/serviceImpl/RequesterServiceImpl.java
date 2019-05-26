@@ -8,6 +8,7 @@ import com.timelytest.hackathon.enumeration.Message;
 import com.timelytest.hackathon.repository.InstructionRepository;
 import com.timelytest.hackathon.repository.UserRepository;
 import com.timelytest.hackathon.service.RequesterService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -20,6 +21,7 @@ public class RequesterServiceImpl implements RequesterService {
     private final InstructionRepository instructionRepository;
     private final UserRepository userRepository;
 
+    @Autowired
     public RequesterServiceImpl(InstructionRepository instructionRepository, UserRepository userRepository) {
         this.instructionRepository = instructionRepository;
         this.userRepository = userRepository;

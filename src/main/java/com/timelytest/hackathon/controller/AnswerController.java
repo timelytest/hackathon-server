@@ -6,6 +6,7 @@ import com.timelytest.hackathon.service.AnswerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -15,6 +16,7 @@ public class AnswerController {
     public AnswerController(AnswerService answerService){
         this.answerService=answerService;
     }
+
     @PostMapping("/question/list/type")
     // 根据 type 为用户提供推荐的问题列表
     public List<Question> getQuestionListByType(@RequestParam String type){
@@ -29,13 +31,15 @@ public class AnswerController {
 
     @PostMapping("/question/answer")
     // 回答某个问题
-    public String answerQuestion(@RequestParam int questionId, @RequestParam String email, @RequestParam String content){
-        return null;
+    public String answerQuestion(HttpSession session, @RequestParam int questionId, @RequestParam String content){
+        String email = session.getAttribute("email").toString();
+        return answerService.answerQuestion(questionId, email, content);
     }
 
     @PostMapping("/answer/list")
     // 查看所有回答过的问题
-    public List<Answer> getAnswerList(@RequestParam String email){
-        return null;
+    public List<Answer> getAnswerList(HttpSession session){
+        String email = session.getAttribute("email").toString();
+        return answerService.getAnswerList(email);
     }
 }
