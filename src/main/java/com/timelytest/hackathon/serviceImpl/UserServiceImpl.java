@@ -3,6 +3,7 @@ package com.timelytest.hackathon.serviceImpl;
 import com.timelytest.hackathon.bean.RegisterBean;
 import com.timelytest.hackathon.entity.PasswordEntity;
 import com.timelytest.hackathon.entity.User;
+import com.timelytest.hackathon.enumeration.Message;
 import com.timelytest.hackathon.repository.PasswordRepository;
 import com.timelytest.hackathon.repository.UserRepository;
 import com.timelytest.hackathon.service.UserService;
@@ -27,7 +28,7 @@ public class UserServiceImpl implements UserService {
     public String register(RegisterBean registerBean, String cardImageUrl) {
         Optional<User> optionalUser=userRepository.findByEmail(registerBean.getEmail());
         if(optionalUser.isPresent()){
-            return "user exist";
+            return Message.EXIST.toString();
         }else{
             User user=new User();
             user.setEmail(registerBean.getEmail());
@@ -40,7 +41,7 @@ public class UserServiceImpl implements UserService {
             try {
                 userRepository.save(user);
             }catch (Exception e){
-                return "fail";
+                return Message.FAIL.toString();
             }
             PasswordEntity passwordEntity=new PasswordEntity();
             passwordEntity.setEmail(registerBean.getEmail());
@@ -48,19 +49,19 @@ public class UserServiceImpl implements UserService {
             passwordEntity.setPassword(md5Password.getMD5(registerBean.getPassword()));
             passwordRepository.save(passwordEntity);
         }
-        return "success";
+        return Message.SUCCESS.toString();
     }
 
     @Override
     public String login(String email, String password) {
         Optional<PasswordEntity> optionalPasswordEntity=passwordRepository.findByEmail(email);
         if(!optionalPasswordEntity.isPresent()){
-            return "fail";
+            return Message.FAIL.toString();
         }else{
             MD5Password md5Password=new MD5Password();
             if(!optionalPasswordEntity.get().getPassword().equals(md5Password.getMD5(password)))
-                return "fail";
+                return Message.FAIL.toString();
         }
-        return "success";
+        return Message.SUCCESS.toString();
     }
 }

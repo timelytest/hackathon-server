@@ -1,4 +1,4 @@
-package com.timelytest.hackathon.entity;
+package com.timelytest.hackathon.enumeration;
 
 public enum InstructionState {
     WAIT, ONGOING, ACHIEVED

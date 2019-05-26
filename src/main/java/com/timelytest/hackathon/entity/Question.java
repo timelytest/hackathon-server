@@ -18,7 +18,7 @@ public class Question {
     // 问题标题
     private String title;
     // 提问日期
-    private Date date;
+    private String date;
     // 报酬
     private double reward;
     // 问题已结束
@@ -27,7 +27,7 @@ public class Question {
     public Question() {
     }
 
-    public Question(String type, String email, String content, String title, Date date, double reward, boolean closed) {
+    public Question(String type, String email, String content, String title, String date, double reward, boolean closed) {
         this.type = type;
         this.email = email;
         this.content = content;
@@ -77,11 +77,11 @@ public class Question {
         this.title = title;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

@@ -1,5 +1,7 @@
 package com.timelytest.hackathon.entity;
 
+import com.timelytest.hackathon.enumeration.InstructionState;
+
 import javax.persistence.*;
 import java.util.Date;
 
