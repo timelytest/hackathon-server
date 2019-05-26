@@ -15,8 +15,8 @@ import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
-    final UserRepository userRepository;
-    final PasswordRepository passwordRepository;
+    private final UserRepository userRepository;
+    private final PasswordRepository passwordRepository;
     @Autowired
     public UserServiceImpl(UserRepository userRepository,PasswordRepository passwordRepository){
         this.userRepository = userRepository;

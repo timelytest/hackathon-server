@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -30,8 +31,9 @@ public class AnswerController {
 
     @PostMapping("/question/answer")
     // 回答某个问题
-    public String answerQuestion(@RequestParam int questionId, @RequestParam String email, @RequestParam String content){
-        return null;
+    public String answerQuestion(HttpSession session, @RequestParam int questionId, @RequestParam String content){
+        String email = session.getAttribute("email").toString();
+        return answerService.answerQuestion(questionId, email, content);
     }
 
     @PostMapping("/answer/list")
@@ -39,5 +41,8 @@ public class AnswerController {
     public List<Answer> getAnswerList(@RequestParam String email){
 
         return new ArrayList<>();
+    public List<Answer> getAnswerList(HttpSession session){
+        String email = session.getAttribute("email").toString();
+        return answerService.getAnswerList(email);
     }
 }
