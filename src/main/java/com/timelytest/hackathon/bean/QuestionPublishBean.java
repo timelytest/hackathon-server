@@ -2,7 +2,6 @@ package com.timelytest.hackathon.bean;
 
 public class QuestionPublishBean {
     private String type;
-    private String email;
     private String content;
     private String title;
     private double reward;
@@ -10,9 +9,8 @@ public class QuestionPublishBean {
     public QuestionPublishBean() {
     }
 
-    public QuestionPublishBean(String type, String email, String content, String title, double reward) {
+    public QuestionPublishBean(String type, String content, String title, double reward) {
         this.type = type;
-        this.email = email;
         this.content = content;
         this.title = title;
         this.reward = reward;
@@ -24,14 +22,6 @@ public class QuestionPublishBean {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getContent() {

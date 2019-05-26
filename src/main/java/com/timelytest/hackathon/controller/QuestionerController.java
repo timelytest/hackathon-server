@@ -20,7 +20,7 @@ public class QuestionerController {
         this.questionerService=questionerService;
     }
     @PostMapping("/publish")
-    public String publish(HttpSession session,@RequestBody QuestionPublishBean questionPublishBean,MultipartFile multipartFile){
+    public String publish(HttpSession session,@RequestBody QuestionPublishBean questionPublishBean, MultipartFile multipartFile){
         String fileUrl=null;
         if (multipartFile != null) {
             FileSaving fileSaving = new FileSaving();

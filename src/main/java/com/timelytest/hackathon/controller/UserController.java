@@ -1,6 +1,7 @@
 package com.timelytest.hackathon.controller;
 
 import com.timelytest.hackathon.bean.RegisterBean;
+import com.timelytest.hackathon.bean.UserContextBean;
 import com.timelytest.hackathon.enumeration.Message;
 import com.timelytest.hackathon.service.UserService;
 import com.timelytest.hackathon.tool.FileSaving;
@@ -37,7 +38,7 @@ public class UserController {
         return fileUrl;
     }
 
-   @PostMapping (value = "login")
+    @PostMapping (value = "login")
     public String login(HttpSession session,String email, String password){
         String result=userService.login(email,password);
         if(result.equals(Message.SUCCESS.toString())){
@@ -47,4 +48,8 @@ public class UserController {
     }
 
 
+    @PostMapping(value = "")
+    public UserContextBean getUserContext(String email){
+        return null;
+    }
 }
