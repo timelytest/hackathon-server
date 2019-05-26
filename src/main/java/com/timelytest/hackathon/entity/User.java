@@ -12,6 +12,9 @@ public class User {
     private String username;
     private String password;
 
+    public User() {
+    }
+
     public int getUserId() {
         return userId;
     }

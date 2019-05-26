@@ -17,9 +17,9 @@ public class UserController {
     }
 
     @GetMapping("login")
-    public String userLogin(/*@RequestParam String username, @RequestParam String password*/){
+    public String userLogin(@RequestParam String username, @RequestParam String password){
         //return userService.login(username, password);
-        return "hello";
+        return "hello" + userService.login(username, password);
     }
 
     @PostMapping("logout")
