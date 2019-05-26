@@ -27,6 +27,15 @@ public class RequesterServiceImpl implements RequesterService {
 
     @Override
     public String publish(InstructionPublishBean instructionPublishBean, String path) {
+        Optional<User> optionalUser = userRepository.findByEmail(instructionPublishBean.getRequesterEmail());
+        if(!optionalUser.isPresent())
+            return Message.FAIL.toString();
+        User user = optionalUser.get();
+        if(user.getReward() < instructionPublishBean.getReward())
+            return Message.BALANCE_NOT_ENOUGH.toString();
+        user.setReward(optionalUser.get().getReward() - instructionPublishBean.getReward());
+        userRepository.save(optionalUser.get());
+
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Instruction instruction = new Instruction();
         instruction.setPath(path);
@@ -51,29 +60,41 @@ public class RequesterServiceImpl implements RequesterService {
     }
 
     @Override
-    public String adopt(String email, int instructionId) {
+    public String adopt(int instructionId) {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Optional<Instruction> optionalInstruction = instructionRepository.findById(instructionId);
         if(!optionalInstruction.isPresent()){
             return Message.FAIL.toString();
         }else {
             Instruction instruction = optionalInstruction.get();
+            instruction.setInstructionState(InstructionState.ACHIEVED);
             instruction.setEndDate(df.format(new Date()));
             instruction.setPayed(true);
 
             Optional<User> optionalUser = userRepository.findByEmail(instruction.getRequesterEmail());
             if(optionalUser.isPresent()){
                 User user = optionalUser.get();
-                user.setReward(optionalUser.get().getReward() + optionalUser.get().getReward());
-                try{
-                    userRepository.save(optionalUser.get());
-                }catch (Exception e){
-                    return Message.FAIL.toString();
-                }
-                return Message.SUCCESS.toString();
+                user.setReward(user.getReward() + instruction.getReward());
+                userRepository.save(user);
             }
             return Message.FAIL.toString();
         }
+    }
+
+    @Override
+    public String cancel(int instructionId) {
+        Optional<Instruction> optionalInstruction = instructionRepository.findById(instructionId);
+        if(optionalInstruction.isPresent()){
+            Instruction instruction = optionalInstruction.get();
+            Optional<User> optionalUser = userRepository.findByEmail(instruction.getRequesterEmail());
+            if(optionalUser.isPresent()){
+                User user = optionalUser.get();
+                user.setReward(user.getReward() + instruction.getReward());
+                userRepository.save(user);
+                return Message.SUCCESS.toString();
+            }
+        }
+        return Message.FAIL.toString();
     }
 
     @Override
