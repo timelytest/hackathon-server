@@ -33,6 +33,7 @@ public class UserController {
             FileSaving fileSaving = new FileSaving();
             fileUrl = fileSaving.saveFile(file);
         }
+        System.out.println(fileUrl);
         return fileUrl;
     }
 
