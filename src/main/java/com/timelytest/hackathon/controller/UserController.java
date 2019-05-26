@@ -21,10 +21,10 @@ public class UserController {
         this.userService = userService;
     }
 
-//    @PostMapping(value = "register")
-//    public String register(@RequestBody RegisterBean registerBean){
-//        return null;
-//    }
+    @PostMapping(value = "register")
+    public String register(@RequestBody RegisterBean registerBean, @RequestParam(name = "file") MultipartFile file){
+        return null;
+    }
 
 
     @PostMapping(value = "register")

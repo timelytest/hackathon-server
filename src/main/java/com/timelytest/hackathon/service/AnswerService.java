@@ -11,5 +11,6 @@ public interface AnswerService {
     List<Question> getQuestionListByType(String type);
     List<Question> getQuestionListByRecommendation(String keyword);
     String answerQuestion(int questionId, String email, String content);
+    String modifyQuestion(int questionId, String email, String content);
     List<Answer> getAnswerList(String email);
 }

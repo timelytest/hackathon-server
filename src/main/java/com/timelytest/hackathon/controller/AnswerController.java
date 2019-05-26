@@ -34,6 +34,13 @@ public class AnswerController {
         return answerService.answerQuestion(questionId, email, content);
     }
 
+
+    @PostMapping("/question/modify")
+    public String modifyQuestion(HttpSession session, @RequestParam int questionId, @RequestParam String content){
+        String email = session.getAttribute("email").toString();
+        return answerService.modifyQuestion(questionId, email, content);
+    }
+
     @PostMapping("/answer/list")
     // 查看所有回答过的问题
     public List<Answer> getAnswerList(HttpSession session){
