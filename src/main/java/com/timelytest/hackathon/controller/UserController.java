@@ -24,7 +24,7 @@ public class UserController {
         return null;
     }
 
-   @GetMapping (value = "login")
+    @GetMapping (value = "login")
     public String login(HttpSession session,String email, String password){
         String result=userService.login(email,password);
         if(result.equals(Message.SUCCESS.toString())){
@@ -33,5 +33,9 @@ public class UserController {
         return userService.login(email,password);
     }
 
+    @PostMapping(value = "/test")
+    public String test(){
+        return "hello world";
+    }
 
 }
