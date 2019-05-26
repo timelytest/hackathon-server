@@ -8,12 +8,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/instruction")
 public class InstructorController {
-    @GetMapping("/list/accept")
+    @PostMapping("/list/accept")
     public List<Instruction> getInstructorInstructionList(@RequestParam String email){
         return null;
     }
 
-    @GetMapping("/accept")
+    @PostMapping("/accept")
     public List<Instruction> acceptInstruction(@RequestParam String email){
         return null;
     }

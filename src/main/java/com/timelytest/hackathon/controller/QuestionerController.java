@@ -46,7 +46,7 @@ public class QuestionerController {
         return questionerService.adopt(questionId,answerId);
     }
 
-    @GetMapping("/list/publish")
+    @PostMapping("/list/publish")
     // 查看发布过的问题
     public List<Question> getQuestionList(@RequestParam String email){
         return questionerService.getQuestionList(email);

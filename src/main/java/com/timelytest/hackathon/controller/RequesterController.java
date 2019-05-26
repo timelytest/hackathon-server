@@ -20,7 +20,7 @@ public class RequesterController {
         return null;
     }
 
-    @GetMapping("/list/publish")
+    @PostMapping("/list/publish")
     public List<Instruction> getRequesterInstructionList(@RequestParam String email){
         return null;
     }
