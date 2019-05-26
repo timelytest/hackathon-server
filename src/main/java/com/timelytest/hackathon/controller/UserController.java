@@ -30,6 +30,7 @@ public class UserController {
 
     @GetMapping("get")
     public User getUser(){
-        return new User(123, "user", "pass");
+//        return new User(123, "user", "pass");
+        return  null;
     }
 }
