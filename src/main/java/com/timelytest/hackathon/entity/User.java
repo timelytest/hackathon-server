@@ -7,19 +7,19 @@ import javax.persistence.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int userId;
+    private double userId;
     private String email;
     private String username;
     private String school;
     private String studentId;
     private String major;
-    private int reward;
-    private int askPrestige;
-    private int answerPrestige;
+    private double reward;
+    private double askPrestige;
+    private double answerPrestige;
     private String cardImageUrl;
     private boolean accepted;
     public User(){}
-    public User(String username, String school, String studentId, String major, int reward, int askPrestige, int answerPrestige, String cardImageUrl,String email,boolean accepted) {
+    public User(String username, String school, String studentId, String major, double reward, double askPrestige, double answerPrestige, String cardImageUrl,String email,boolean accepted) {
         this.username = username;
         this.school = school;
         this.studentId = studentId;
@@ -32,11 +32,11 @@ public class User {
         this.accepted=accepted;
     }
 
-    public int getUserId() {
+    public double getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(double userId) {
         this.userId = userId;
     }
 
@@ -80,27 +80,27 @@ public class User {
         this.major = major;
     }
 
-    public int getReward() {
+    public double getReward() {
         return reward;
     }
 
-    public void setReward(int reward) {
+    public void setReward(double reward) {
         this.reward = reward;
     }
 
-    public int getAskPrestige() {
+    public double getAskPrestige() {
         return askPrestige;
     }
 
-    public void setAskPrestige(int askPrestige) {
+    public void setAskPrestige(double askPrestige) {
         this.askPrestige = askPrestige;
     }
 
-    public int getAnswerPrestige() {
+    public double getAnswerPrestige() {
         return answerPrestige;
     }
 
-    public void setAnswerPrestige(int answerPrestige) {
+    public void setAnswerPrestige(double answerPrestige) {
         this.answerPrestige = answerPrestige;
     }
 
