@@ -3,8 +3,10 @@ package com.timelytest.hackathon.controller;
 import com.timelytest.hackathon.bean.RegisterBean;
 import com.timelytest.hackathon.enumeration.Message;
 import com.timelytest.hackathon.service.UserService;
+import com.timelytest.hackathon.tool.FileSaving;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 
@@ -18,10 +20,20 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping(value = "register")
-    public String register(@RequestBody RegisterBean registerBean){
+//    @PostMapping(value = "register")
+//    public String register(@RequestBody RegisterBean registerBean){
+//        return null;
+//    }
 
-        return null;
+
+    @PostMapping(value = "register")
+    public String register(MultipartFile file){
+        String fileUrl = null;
+        if (file != null) {
+            FileSaving fileSaving = new FileSaving();
+            fileUrl = fileSaving.saveFile(file);
+        }
+        return fileUrl;
     }
 
    @PostMapping (value = "login")
