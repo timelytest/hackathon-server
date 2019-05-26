@@ -5,5 +5,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface QuestionerService {
-    String publish(QuestionPublishBean questionPublishBean,String email);
+    String publish(QuestionPublishBean questionPublishBean,String email,String fileUrl);
+    String modify(int questionId,QuestionPublishBean questionPublishBean,String fileUrl);
 }

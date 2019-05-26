@@ -2,9 +2,11 @@ package com.timelytest.hackathon.controller;
 
 import com.timelytest.hackathon.bean.QuestionPublishBean;
 import com.timelytest.hackathon.service.QuestionerService;
+import com.timelytest.hackathon.tool.FileSaving;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.timelytest.hackathon.entity.Question;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -18,14 +20,18 @@ public class QuestionerController {
         this.questionerService=questionerService;
     }
     @PostMapping("/publish")
-    public String publish(@RequestBody QuestionPublishBean questionPublishBean){
-        return null;
+    public String publish(HttpSession session,@RequestBody QuestionPublishBean questionPublishBean,MultipartFile multipartFile){
+        FileSaving fileSaving=new FileSaving();
+        String fileUrl=fileSaving.saveFile(multipartFile);
+        return questionerService.publish(questionPublishBean,session.getAttribute("email").toString(),fileUrl);
     }
 
     @PostMapping("/modify")
     // 修改问题
-    public String modify(@RequestParam int questionId, @RequestBody QuestionPublishBean questionPublishBean){
-        return null;
+    public String modify(@RequestParam int questionId, @RequestBody QuestionPublishBean questionPublishBean,MultipartFile multipartFile){
+        FileSaving fileSaving=new FileSaving();
+        String url=fileSaving.saveFile(multipartFile);
+        return questionerService.modify(questionId,questionPublishBean,url);
     }
 
     @PostMapping("/adopt")
@@ -33,10 +39,11 @@ public class QuestionerController {
     public String adopt(@RequestParam int questionId, @RequestParam  int answerId){
         return null;
     }
-    @GetMapping("/list/publish")
 
+    @GetMapping("/list/publish")
     // 查看发布过的问题
     public List<Question> getQuestionList(@RequestParam String email){
+        
         return null;
     }
 }

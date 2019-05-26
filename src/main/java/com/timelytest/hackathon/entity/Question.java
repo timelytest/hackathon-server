@@ -23,11 +23,13 @@ public class Question {
     private double reward;
     // 问题已结束
     private boolean closed;
+    //附件路径
+    private String path;
 
     public Question() {
     }
 
-    public Question(String type, String email, String content, String title, String date, double reward, boolean closed) {
+    public Question(String type, String email, String content, String title, String date, double reward, boolean closed,String path) {
         this.type = type;
         this.email = email;
         this.content = content;
@@ -35,6 +37,7 @@ public class Question {
         this.date = date;
         this.reward = reward;
         this.closed = closed;
+        this.path=path;
     }
 
     public int getQuestionId() {
@@ -99,5 +102,13 @@ public class Question {
 
     public void setClosed(boolean closed) {
         this.closed = closed;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public String getPath() {
+        return path;
     }
 }
