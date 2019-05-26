@@ -1,7 +1,5 @@
 package com.timelytest.hackathon.bean;
 
-import org.springframework.web.multipart.MultipartFile;
-
 public class RegisterBean {
     private String email;
     private String username;
@@ -10,12 +8,11 @@ public class RegisterBean {
     private String studentId;
     private String grade;
     private String major;
-    private MultipartFile file;
 
     public RegisterBean() {
     }
 
-    public RegisterBean(String email, String username, String password, String school, String studentId, String grade, String major, MultipartFile file) {
+    public RegisterBean(String email, String username, String password, String school, String studentId, String grade, String major) {
         this.email = email;
         this.username = username;
         this.password = password;
@@ -23,7 +20,6 @@ public class RegisterBean {
         this.studentId = studentId;
         this.grade = grade;
         this.major = major;
-        this.file = file;
     }
 
     public String getEmail() {
@@ -80,13 +76,5 @@ public class RegisterBean {
 
     public void setMajor(String major) {
         this.major = major;
-    }
-
-    public MultipartFile getFile() {
-        return file;
-    }
-
-    public void setFile(MultipartFile file) {
-        this.file = file;
     }
 }

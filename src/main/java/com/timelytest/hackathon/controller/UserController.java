@@ -21,14 +21,14 @@ public class UserController {
         this.userService = userService;
     }
 
-//    @PostMapping(value = "register")
-//    public String register(@RequestBody RegisterBean registerBean){
-//        return null;
-//    }
+    @PostMapping(value = "register")
+    public String register(@RequestBody RegisterBean registerBean, @RequestParam(name = "file") MultipartFile file){
+        return null;
+    }
 
 
     @PostMapping(value = "register")
-    public String register(MultipartFile file){
+    public String register(@RequestParam(name = "image") MultipartFile file){
         String fileUrl = null;
         if (file != null) {
             FileSaving fileSaving = new FileSaving();
@@ -48,7 +48,7 @@ public class UserController {
     }
 
 
-    @PostMapping(value = "")
+    @PostMapping(value = "context")
     public UserContextBean getUserContext(String email){
         return null;
     }

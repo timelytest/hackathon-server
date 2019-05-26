@@ -5,8 +5,6 @@ import com.timelytest.hackathon.entity.Question;
 import com.timelytest.hackathon.service.AnswerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -23,10 +21,10 @@ public class AnswerController {
         return answerService.getQuestionListByType(type);
     }
 
-    @GetMapping("/question/list/recommendation")
-    // 根据 key 为用户提供推荐的问题列表
-    public List<Question> getQuestionListByRecommendation(@RequestParam String keywords){
-        return answerService.getQuestionListByRecommendation(keywords);
+    @GetMapping("/question/list/keyword")
+    // 根据 keyword 为用户提供推荐的问题列表
+    public List<Question> getQuestionListByRecommendation(@RequestParam String keyword){
+        return answerService.getQuestionListByRecommendation(keyword);
     }
 
     @PostMapping("/question/answer")

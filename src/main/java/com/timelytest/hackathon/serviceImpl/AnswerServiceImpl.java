@@ -28,8 +28,8 @@ public class AnswerServiceImpl implements AnswerService {
     }
 
     @Override
-    public List<Question> getQuestionListByRecommendation(String keywords) {
-        return questionRepository.findByKeyAndClosed(keywords,false);
+    public List<Question> getQuestionListByRecommendation(String keyword) {
+        return questionRepository.findByKeyAndClosed(keyword,false);
     }
 
     @Override
