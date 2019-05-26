@@ -1,7 +1,6 @@
 package com.timelytest.hackathon.entity;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "question")
