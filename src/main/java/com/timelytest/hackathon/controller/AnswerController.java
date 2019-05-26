@@ -16,7 +16,7 @@ public class AnswerController {
 
     @PostMapping("/question/list/recommendation")
     // 根据 email 为用户提供推荐的问题列表
-    public List<Question> getQuestionListByRecommendation(@RequestParam String email){
+    public List<Question> getQuestionListByRecommendation(@RequestParam String keywords){
         return null;
     }
 
