@@ -5,10 +5,11 @@ import com.timelytest.hackathon.enumeration.InstructionState;
 import com.timelytest.hackathon.enumeration.Message;
 import com.timelytest.hackathon.repository.InstructionRepository;
 import com.timelytest.hackathon.service.InstructorService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class InstructorServiceImpl implements InstructorService {
     private final InstructionRepository instructionRepository;
 

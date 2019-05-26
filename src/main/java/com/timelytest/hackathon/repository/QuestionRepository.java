@@ -11,4 +11,8 @@ public interface QuestionRepository  extends JpaRepository<Question, Integer> {
     List<Question> findAll();
     @Query(value = "select * from question where email = ?1",nativeQuery = true)
     List<Question> findAllByEmail(String Email);
+    @Query(value = "select * from question where type = ?1 and closed = ?2",nativeQuery = true)
+    List<Question> findByTypeAndAndClosed(String type,boolean closed);
+    @Query(value = "select * from question where title like %?1% and closed = ?2",nativeQuery = true)
+    List<Question> findByKeyAndClosed(String key,boolean closed);
 }
