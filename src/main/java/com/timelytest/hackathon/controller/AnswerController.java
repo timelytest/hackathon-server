@@ -5,8 +5,6 @@ import com.timelytest.hackathon.entity.Question;
 import com.timelytest.hackathon.service.AnswerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -38,9 +36,6 @@ public class AnswerController {
 
     @PostMapping("/answer/list")
     // 查看所有回答过的问题
-    public List<Answer> getAnswerList(@RequestParam String email){
-
-        return new ArrayList<>();
     public List<Answer> getAnswerList(HttpSession session){
         String email = session.getAttribute("email").toString();
         return answerService.getAnswerList(email);
