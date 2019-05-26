@@ -3,7 +3,6 @@ package com.timelytest.hackathon.entity;
 import com.timelytest.hackathon.enumeration.InstructionState;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "instruction")
@@ -20,22 +19,24 @@ public class Instruction {
     // 指导的详情
     private String content;
     // 请求发起的日期
-    private Date date;
+    private String date;
     // 预约的指导开始时间
-    private Date startDate;
-    // 指导结束时间（若为 null 则没有）
-    private Date endDate;
+    private String startDate;
+    // 指导结束时间（若为 null 则没有进行指导或指导尚未结束）
+    private String endDate;
     // 指导状态
     private InstructionState instructionState;
     // 报酬
     private double reward;
     // 是否支付报酬
     private boolean payed;
+    // 附件路径
+    private String path;
 
     public Instruction() {
     }
 
-    public Instruction(String requesterEmail, String instructorEmail, String title, String content, Date date, Date startDate, Date endDate, InstructionState instructionState, double reward, boolean payed) {
+    public Instruction(String requesterEmail, String instructorEmail, String title, String content, String date, String startDate, String endDate, InstructionState instructionState, double reward, boolean payed, String path) {
         this.requesterEmail = requesterEmail;
         this.instructorEmail = instructorEmail;
         this.title = title;
@@ -46,6 +47,7 @@ public class Instruction {
         this.instructionState = instructionState;
         this.reward = reward;
         this.payed = payed;
+        this.path = path;
     }
 
     public int getInstructionId() {
@@ -88,27 +90,27 @@ public class Instruction {
         this.content = content;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
@@ -134,5 +136,13 @@ public class Instruction {
 
     public void setPayed(boolean payed) {
         this.payed = payed;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 }

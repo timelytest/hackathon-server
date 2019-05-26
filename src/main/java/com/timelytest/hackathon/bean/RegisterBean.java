@@ -9,6 +9,19 @@ public class RegisterBean {
     private String grade;
     private String major;
 
+    public RegisterBean() {
+    }
+
+    public RegisterBean(String email, String username, String password, String school, String studentId, String grade, String major) {
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.school = school;
+        this.studentId = studentId;
+        this.grade = grade;
+        this.major = major;
+    }
+
     public String getEmail() {
         return email;
     }
