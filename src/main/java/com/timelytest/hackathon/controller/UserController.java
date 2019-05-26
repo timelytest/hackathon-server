@@ -23,20 +23,26 @@ public class UserController {
 
     @PostMapping(value = "register")
     public String register(@RequestBody RegisterBean registerBean, @RequestParam(name = "file") MultipartFile file){
-        return null;
-    }
-
-
-    @PostMapping(value = "register")
-    public String register(@RequestParam(name = "image") MultipartFile file){
         String fileUrl = null;
         if (file != null) {
             FileSaving fileSaving = new FileSaving();
             fileUrl = fileSaving.saveFile(file);
         }
         System.out.println(fileUrl);
-        return fileUrl;
+        return userService.register(registerBean, fileUrl);
     }
+
+
+//    @PostMapping(value = "register")
+//    public String register(@RequestParam(name = "image") MultipartFile file){
+//        String fileUrl = null;
+//        if (file != null) {
+//            FileSaving fileSaving = new FileSaving();
+//            fileUrl = fileSaving.saveFile(file);
+//        }
+//        System.out.println(fileUrl);
+//        return fileUrl;
+//    }
 
     @PostMapping (value = "login")
     public String login(HttpSession session,String email, String password){

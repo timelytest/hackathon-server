@@ -48,7 +48,8 @@ public class QuestionerController {
 
     @PostMapping("/list/publish")
     // 查看发布过的问题
-    public List<Question> getQuestionList(@RequestParam String email){
+    public List<Question> getQuestionList(HttpSession session){
+        String email = session.getAttribute("email").toString();
         return questionerService.getQuestionList(email);
     }
 }
