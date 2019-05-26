@@ -18,30 +18,20 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping(value = "/register")
+    @PostMapping(value = "register")
     public String register(@RequestBody RegisterBean registerBean){
 
         return null;
     }
 
-    @PostMapping (value = "/login")
+   @PostMapping (value = "login")
     public String login(HttpSession session,String email, String password){
-        System.out.println("INPUT_EMAIL = "+ email);
-        System.out.println("INPUT_PASSWORD = "+ password);
-        if(email.equals("email"))
-//        String result=userService.login(email,password);
-//        if(result.equals(Message.SUCCESS.toString())){
-//            session.setAttribute("email",email);
-//        }
-//        return userService.login(email,password);
-        return "SUCCESS";
-
-        return "FAIL";
+        String result=userService.login(email,password);
+        if(result.equals(Message.SUCCESS.toString())){
+            session.setAttribute("email",email);
+        }
+        return userService.login(email,password);
     }
 
-    @PostMapping(value = "/test")
-    public String test(){
-        return "hello world";
-    }
 
 }
