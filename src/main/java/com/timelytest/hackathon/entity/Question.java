@@ -25,11 +25,14 @@ public class Question {
     private boolean closed;
     //附件路径
     private String path;
+    //采纳的答案
+    private int answerId;
+
 
     public Question() {
     }
 
-    public Question(String type, String email, String content, String title, String date, double reward, boolean closed,String path) {
+    public Question(String type, String email, String content, String title, String date, double reward, boolean closed,String path,int answerId) {
         this.type = type;
         this.email = email;
         this.content = content;
@@ -38,6 +41,7 @@ public class Question {
         this.reward = reward;
         this.closed = closed;
         this.path=path;
+        this.answerId=answerId;
     }
 
     public int getQuestionId() {
@@ -110,5 +114,13 @@ public class Question {
 
     public String getPath() {
         return path;
+    }
+
+    public int getAnswerId() {
+        return answerId;
+    }
+
+    public void setAnswerId(int answerId) {
+        this.answerId = answerId;
     }
 }

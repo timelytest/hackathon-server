@@ -43,13 +43,13 @@ public class QuestionerController {
     @PostMapping("/adopt")
     // 采纳回答
     public String adopt(@RequestParam int questionId, @RequestParam  int answerId){
+
         return null;
     }
 
     @GetMapping("/list/publish")
     // 查看发布过的问题
     public List<Question> getQuestionList(@RequestParam String email){
-
-        return null;
+        return questionerService.getQuestionList(email);
     }
 }
