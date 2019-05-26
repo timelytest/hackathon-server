@@ -13,7 +13,7 @@ public class Instruction {
     private String requesterEmail;
     // 指导者 email
     private String instructorEmail;
-    // 指导学习的标题
+    // 指导学习内容的概况
     private String title;
     // 指导的详情
     private String content;
@@ -21,17 +21,19 @@ public class Instruction {
     private Date date;
     // 预约的指导开始时间
     private Date startDate;
-    // 预约的指导开结束时间
+    // 指导结束时间（若为 null 则没有）
     private Date endDate;
+    // 指导状态
+    private InstructionState instructionState;
     // 报酬
     private double reward;
     // 是否支付报酬
-    private boolean closed;
+    private boolean payed;
 
     public Instruction() {
     }
 
-    public Instruction(String requesterEmail, String instructorEmail, String title, String content, Date date, Date startDate, Date endDate, double reward, boolean closed) {
+    public Instruction(String requesterEmail, String instructorEmail, String title, String content, Date date, Date startDate, Date endDate, InstructionState instructionState, double reward, boolean payed) {
         this.requesterEmail = requesterEmail;
         this.instructorEmail = instructorEmail;
         this.title = title;
@@ -39,8 +41,9 @@ public class Instruction {
         this.date = date;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.instructionState = instructionState;
         this.reward = reward;
-        this.closed = closed;
+        this.payed = payed;
     }
 
     public int getInstructionId() {
@@ -107,6 +110,14 @@ public class Instruction {
         this.endDate = endDate;
     }
 
+    public InstructionState getInstructionState() {
+        return instructionState;
+    }
+
+    public void setInstructionState(InstructionState instructionState) {
+        this.instructionState = instructionState;
+    }
+
     public double getReward() {
         return reward;
     }
@@ -115,11 +126,11 @@ public class Instruction {
         this.reward = reward;
     }
 
-    public boolean isClosed() {
-        return closed;
+    public boolean isPayed() {
+        return payed;
     }
 
-    public void setClosed(boolean closed) {
-        this.closed = closed;
+    public void setPayed(boolean payed) {
+        this.payed = payed;
     }
 }

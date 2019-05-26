@@ -1,9 +1,21 @@
 package com.timelytest.hackathon.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.timelytest.hackathon.bean.QuestionPublishBean;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/question")
 public class QuestionerController {
+
+    @PostMapping("/publish")
+    public String publish(@RequestBody QuestionPublishBean questionPublishBean){
+        return null;
+    }
+
+    @PostMapping("/adopt")
+    public String adopt(int questionId, int answerId){
+        return null;
+    }
 }
