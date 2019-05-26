@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private double userId;
+    private int userId;
     private String email;
     private String username;
     private String school;
@@ -32,11 +32,11 @@ public class User {
         this.accepted=accepted;
     }
 
-    public double getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(double userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 

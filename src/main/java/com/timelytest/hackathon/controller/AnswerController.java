@@ -26,7 +26,7 @@ public class AnswerController {
         return null;
     }
 
-    @GetMapping("/answer/list")
+    @PostMapping("/answer/list")
     // 查看所有回答过的问题
     public List<Answer> getAnswerList(@RequestParam String email){
         return null;
