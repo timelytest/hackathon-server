@@ -26,12 +26,15 @@ public class UserController {
 
     @PostMapping (value = "/login")
     public String login(HttpSession session,String email, String password){
+        if(email.equals("email"))
 //        String result=userService.login(email,password);
 //        if(result.equals(Message.SUCCESS.toString())){
 //            session.setAttribute("email",email);
 //        }
 //        return userService.login(email,password);
         return "SUCCESS";
+
+        return "FAIL";
     }
 
     @PostMapping(value = "/test")
