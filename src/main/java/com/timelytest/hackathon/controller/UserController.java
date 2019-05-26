@@ -1,9 +1,13 @@
 package com.timelytest.hackathon.controller;
 
+import com.timelytest.hackathon.bean.RegisterBean;
 import com.timelytest.hackathon.entity.User;
 import com.timelytest.hackathon.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("/user")
@@ -16,21 +20,16 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("login")
-    public String userLogin(@RequestParam String username, @RequestParam String password){
-        //return userService.login(username, password);
-        return "hello" + userService.login(username, password);
+    @PostMapping(value = "register")
+    public String register(@RequestBody RegisterBean registerBean){
+
+        return null;
+    }
+    @RequestMapping(value = "submit.assignment",method = RequestMethod.POST)
+    public boolean submitAssignment(@RequestParam("file") MultipartFile[] multipartFiles){
+
+        return false;
     }
 
-    @PostMapping("logout")
-    public String userLogout(/*@RequestParam String username, @RequestParam String password*/){
-        //return userService.login(username, password);
-        return "Logout!";
-    }
 
-    @GetMapping("get")
-    public User getUser(){
-//        return new User(123, "user", "pass");
-        return  null;
-    }
 }

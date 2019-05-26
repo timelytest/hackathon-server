@@ -8,6 +8,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int userId;
+    private String email;
     private String username;
     private String school;
     private String studentId;
@@ -15,9 +16,28 @@ public class User {
     private int score;
     private int askPrestige;
     private int answerPrestige;
+    private String cardImageUrl;
+    private boolean accepted;
+    public User(){}
+    public User(String username, String school, String studentId, String major, int score, int askPrestige, int answerPrestige, String cardImageUrl,String email,boolean accepted) {
+        this.username = username;
+        this.school = school;
+        this.studentId = studentId;
+        this.major = major;
+        this.score = score;
+        this.askPrestige = askPrestige;
+        this.answerPrestige = answerPrestige;
+        this.cardImageUrl = cardImageUrl;
+        this.email=email;
+        this.accepted=accepted;
+    }
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setUsername(String username) {
@@ -48,8 +68,20 @@ public class User {
         this.answerPrestige = answerPrestige;
     }
 
+    public void setCardImageUrl(String cardImageUrl) {
+        this.cardImageUrl = cardImageUrl;
+    }
+
+    public void setAccepted(boolean accepted) {
+        this.accepted = accepted;
+    }
+
     public int getUserId() {
         return userId;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public String getUsername() {
@@ -80,16 +112,11 @@ public class User {
         return answerPrestige;
     }
 
-    public User() {
+    public String getCardImageUrl() {
+        return cardImageUrl;
     }
 
-    public User(String username, String school, String studentId, String major, int score, int askPrestige, int answerPrestige) {
-        this.username = username;
-        this.school = school;
-        this.studentId = studentId;
-        this.major = major;
-        this.score = score;
-        this.askPrestige = askPrestige;
-        this.answerPrestige = answerPrestige;
+    public boolean isAccepted() {
+        return accepted;
     }
 }

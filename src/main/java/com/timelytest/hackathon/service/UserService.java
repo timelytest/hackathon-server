@@ -1,5 +1,7 @@
 package com.timelytest.hackathon.service;
 
+import com.timelytest.hackathon.bean.RegisterBean;
+
 public interface UserService {
-    String login(String username, String password);
+    String register(RegisterBean registerBean,String cardImageId);
 }
