@@ -21,16 +21,22 @@ public class QuestionerController {
     }
     @PostMapping("/publish")
     public String publish(HttpSession session,@RequestBody QuestionPublishBean questionPublishBean,MultipartFile multipartFile){
-        FileSaving fileSaving=new FileSaving();
-        String fileUrl=fileSaving.saveFile(multipartFile);
+        String fileUrl=null;
+        if (multipartFile != null) {
+            FileSaving fileSaving = new FileSaving();
+            fileUrl = fileSaving.saveFile(multipartFile);
+        }
         return questionerService.publish(questionPublishBean,session.getAttribute("email").toString(),fileUrl);
     }
 
     @PostMapping("/modify")
     // 修改问题
-    public String modify(@RequestParam int questionId, @RequestBody QuestionPublishBean questionPublishBean,MultipartFile multipartFile){
-        FileSaving fileSaving=new FileSaving();
-        String url=fileSaving.saveFile(multipartFile);
+    public String modify(@RequestParam int questionId, @RequestBody QuestionPublishBean questionPublishBean,MultipartFile multipartFile) {
+        String url=null;
+        if (multipartFile != null){
+            FileSaving fileSaving = new FileSaving();
+            url = fileSaving.saveFile(multipartFile);
+        }
         return questionerService.modify(questionId,questionPublishBean,url);
     }
 
@@ -43,7 +49,7 @@ public class QuestionerController {
     @GetMapping("/list/publish")
     // 查看发布过的问题
     public List<Question> getQuestionList(@RequestParam String email){
-        
+
         return null;
     }
 }
