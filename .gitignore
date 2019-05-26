@@ -27,3 +27,7 @@ HELP.md
 
 ### VS Code ###
 .vscode/
+
+/src/main/resources/application.properties
+/src/main/java/com/timelytest/hackathon/config/MysqlConfig.java
+
