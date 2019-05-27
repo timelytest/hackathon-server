@@ -2,11 +2,11 @@ package com.timelytest.hackathon.serviceImpl;
 
 import com.timelytest.hackathon.bean.RegisterBean;
 import com.timelytest.hackathon.bean.UserContextBean;
+import com.timelytest.hackathon.entity.Appointment;
 import com.timelytest.hackathon.entity.PasswordEntity;
 import com.timelytest.hackathon.entity.User;
 import com.timelytest.hackathon.enumeration.Message;
-import com.timelytest.hackathon.repository.PasswordRepository;
-import com.timelytest.hackathon.repository.UserRepository;
+import com.timelytest.hackathon.repository.*;
 import com.timelytest.hackathon.service.UserService;
 import com.timelytest.hackathon.tool.MD5Password;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +19,17 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final PasswordRepository passwordRepository;
+    private final QuestionRepository questionRepository;
+    private final AppointmentRepository appointmentRepository;
+    private final AnswerRepository answerRepository;
+
     @Autowired
-    public UserServiceImpl(UserRepository userRepository,PasswordRepository passwordRepository){
+    public UserServiceImpl(UserRepository userRepository, PasswordRepository passwordRepository, QuestionRepository questionRepository, AppointmentRepository appointmentRepository, AnswerRepository answerRepository){
         this.userRepository = userRepository;
         this.passwordRepository=passwordRepository;
+        this.questionRepository = questionRepository;
+        this.appointmentRepository = appointmentRepository;
+        this.answerRepository = answerRepository;
     }
 
 
@@ -69,17 +76,31 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserContextBean getUserContext(String email) {
-
-        return null;
+        Optional<User> optionalUser=userRepository.findByEmail(email);
+        if(!optionalUser.isPresent())
+            return new UserContextBean();
+        User user = optionalUser.get();
+        UserContextBean contextBean = new UserContextBean();
+        contextBean.setUsername(user.getUsername());
+        contextBean.setSchool(user.getSchool());
+        contextBean.setStudentId(user.getStudentId());
+        contextBean.setMajor(user.getMajor());
+        contextBean.setQuestionNumber(questionRepository.findAllByEmail(email).size());
+        contextBean.setAnswerNumber(answerRepository.findAllByEmail(email).size());
+        contextBean.setRequestNumber(appointmentRepository.findAllByRequesterEmail(email).size());
+        contextBean.setInstructNumber(appointmentRepository.findAllByInstructorEmail(email).size());
+        contextBean.setLatestQuestionList(questionRepository.findLatestByEmail(email));
+        contextBean.setLatestAnswerList(answerRepository.findLatestByEmail(email));
+        return contextBean;
     }
 
     @Override
     public List<User> searchUserByUsername(String username) {
-        return null;
+        return userRepository.findByUsername(username);
     }
 
     @Override
     public List<User> searchUserBySchool(String school) {
-        return null;
+        return userRepository.findBySchool(school);
     }
 }

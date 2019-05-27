@@ -14,4 +14,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     List<User> findTopReword();
     @Query(value = "select * from user where accepted = true and school = ?1 order by reward DESC limit 10",nativeQuery = true)
     List<User> findTopRewordBySchool(String school);
+    @Query(value = "select * from user where username = ?1 order by reward DESC limit 10",nativeQuery = true)
+    List<User> findByUsername(String username);
+    @Query(value = "select * from user where school = ?1 order by reward DESC limit 10",nativeQuery = true)
+    List<User> findBySchool(String school);
 }

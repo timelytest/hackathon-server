@@ -46,6 +46,10 @@ public class AppointmentServiceImpl implements AppointmentService {
             appointment.setReward(appointmentPublishBean.getReward());
             appointment.setPath(url);
             appointment.setAppointmentState(AppointmentState.WAIT);
+            if(appointmentPublishBean.getInstructorEmail() != null && appointmentPublishBean.getInstructorEmail().length()>0) {
+                appointment.setInstructorEmail(appointmentPublishBean.getInstructorEmail());
+                appointment.setAppointmentState(AppointmentState.ONGOING);
+            }
             appointmentRepository.save(appointment);
             return Message.SUCCESS.toString();
         }

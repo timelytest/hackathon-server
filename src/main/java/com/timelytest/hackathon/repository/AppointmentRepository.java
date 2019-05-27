@@ -9,4 +9,10 @@ import java.util.List;
 public interface AppointmentRepository extends JpaRepository<Appointment,Integer> {
     @Query(value = "select * from appointment where date < ?1 and  effectiveDate > 1",nativeQuery = true)
     List<Appointment> findAllByDateAfterAndEffectiveDateBefore(String date);
+
+    @Query(value = "select * from appointment where requesterEmail = ?1",nativeQuery = true)
+    List<Appointment> findAllByRequesterEmail(String requesterEmail);
+
+    @Query(value = "select * from appointment where instructorEmail = ?1",nativeQuery = true)
+    List<Appointment> findAllByInstructorEmail(String instructorEmail);
 }
