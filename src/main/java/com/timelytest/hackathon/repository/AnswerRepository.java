@@ -9,4 +9,6 @@ import java.util.List;
 public interface AnswerRepository extends JpaRepository<Answer,Integer> {
     @Query(value = "select * from answer where email = ?1",nativeQuery = true)
     List<Answer> findAllByEmail(String email);
+    @Query(value = "select * from answer where email = ?1 order by date desc limit 10",nativeQuery = true)
+    List<Answer> findLatestByEmail(String email);
 }

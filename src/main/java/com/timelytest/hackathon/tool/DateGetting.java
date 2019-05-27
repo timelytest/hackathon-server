@@ -4,8 +4,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DateGetting {
-    public String getDate(){
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH");
+    private DateGetting() {
+        throw new IllegalStateException("DateGetting class");
+    }
+
+    public static String getDate(){
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return simpleDateFormat.format(new Date());
     }
 }

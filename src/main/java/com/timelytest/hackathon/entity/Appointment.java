@@ -1,11 +1,12 @@
 package com.timelytest.hackathon.entity;
 
+import com.timelytest.hackathon.enumeration.AppointmentState;
 import com.timelytest.hackathon.enumeration.AppointmentType;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "appointment")
 public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,7 +16,9 @@ public class Appointment {
     // 预约类型
     private AppointmentType appointmentType;
     // 提问者email
-    private String email;
+    private String requesterEmail;
+    // 接单者email
+    private String instructorEmail;
     // 问题详情
     private String content;
     // 问题标题
@@ -28,12 +31,15 @@ public class Appointment {
     private double reward;
     // 附件路径
     private String path;
-
-    public Appointment() {
-    }
+    // 预约状态
+    private AppointmentState appointmentState;
 
     public int getAppointmentId() {
         return appointmentId;
+    }
+
+    public void setAppointmentId(int appointmentId) {
+        this.appointmentId = appointmentId;
     }
 
     public String getType() {
@@ -52,12 +58,20 @@ public class Appointment {
         this.appointmentType = appointmentType;
     }
 
-    public String getEmail() {
-        return email;
+    public String getRequesterEmail() {
+        return requesterEmail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setRequesterEmail(String requesterEmail) {
+        this.requesterEmail = requesterEmail;
+    }
+
+    public String getInstructorEmail() {
+        return instructorEmail;
+    }
+
+    public void setInstructorEmail(String instructorEmail) {
+        this.instructorEmail = instructorEmail;
     }
 
     public String getContent() {
@@ -106,5 +120,13 @@ public class Appointment {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public AppointmentState getAppointmentState() {
+        return appointmentState;
+    }
+
+    public void setAppointmentState(AppointmentState appointmentState) {
+        this.appointmentState = appointmentState;
     }
 }

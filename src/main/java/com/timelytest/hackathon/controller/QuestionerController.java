@@ -20,24 +20,26 @@ public class QuestionerController {
         this.questionerService=questionerService;
     }
     @PostMapping("/publish")
-    public String publish(HttpSession session, @RequestBody QuestionPublishBean questionPublishBean, @RequestParam("file") MultipartFile multipartFile){
+    public String publish(HttpSession session, String type, String content, String title, double reward, @RequestParam("file") MultipartFile multipartFile){
         String fileUrl=null;
         if (multipartFile != null) {
             FileSaving fileSaving = new FileSaving();
             fileUrl = fileSaving.saveFile(multipartFile);
         }
-        return questionerService.publish(questionPublishBean,session.getAttribute("email").toString(),fileUrl);
+        QuestionPublishBean bean = new QuestionPublishBean(type, content, title, reward);
+        return questionerService.publish(bean,session.getAttribute("email").toString(),fileUrl);
     }
 
     @PostMapping("/modify")
     // 修改问题
-    public String modify(@RequestParam int questionId, @RequestBody QuestionPublishBean questionPublishBean, MultipartFile multipartFile) {
+    public String modify(@RequestParam int questionId, String type, String content, String title, double reward, MultipartFile multipartFile) {
+        QuestionPublishBean bean = new QuestionPublishBean(type, content, title, reward);
         String url=null;
         if (multipartFile != null){
             FileSaving fileSaving = new FileSaving();
             url = fileSaving.saveFile(multipartFile);
         }
-        return questionerService.modify(questionId,questionPublishBean,url);
+        return questionerService.modify(questionId,bean,url);
     }
 
     @PostMapping("/adopt")
@@ -48,7 +50,8 @@ public class QuestionerController {
 
     @PostMapping("/list/publish")
     // 查看发布过的问题
-    public List<Question> getQuestionList(@RequestParam String email){
+    public List<Question> getQuestionList(HttpSession session){
+        String email = session.getAttribute("email").toString();
         return questionerService.getQuestionList(email);
     }
 }

@@ -14,15 +14,8 @@ public class AppointmentPublishBean {
     private String effectiveDate;
     // 报酬
     private double reward;
-
-    public AppointmentPublishBean(String type, AppointmentType appointmentType, String content, String title, String effectiveDate, double reward) {
-        this.type = type;
-        this.appointmentType = appointmentType;
-        this.content = content;
-        this.title = title;
-        this.effectiveDate = effectiveDate;
-        this.reward = reward;
-    }
+    // 指定的指导者的email
+    private String instructorEmail;
 
     public String getType() {
         return type;
@@ -71,5 +64,13 @@ public class AppointmentPublishBean {
 
     public void setReward(double reward) {
         this.reward = reward;
+    }
+
+    public String getInstructorEmail() {
+        return instructorEmail;
+    }
+
+    public void setInstructorEmail(String instructorEmail) {
+        this.instructorEmail = instructorEmail;
     }
 }

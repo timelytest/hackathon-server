@@ -2,6 +2,7 @@ package com.timelytest.hackathon.controller;
 
 import com.timelytest.hackathon.bean.RegisterBean;
 import com.timelytest.hackathon.bean.UserContextBean;
+import com.timelytest.hackathon.entity.User;
 import com.timelytest.hackathon.enumeration.Message;
 import com.timelytest.hackathon.service.UserService;
 import com.timelytest.hackathon.tool.FileSaving;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -36,7 +38,7 @@ public class UserController {
         }
         System.out.println(fileUrl);
         return fileUrl;
-    }*/
+    }
 
     @GetMapping (value = "login")
     public String login(HttpSession session,String email, String password){
@@ -48,8 +50,18 @@ public class UserController {
     }
 
 
-    @PostMapping(value = "context")
-    public UserContextBean getUserContext(String email){
+    @PostMapping(value = "/context")
+    public UserContextBean getUserContext(HttpSession session){
+        return null;
+    }
+
+    @PostMapping(value = "/search/username")
+    public List<User> searchUserByUsername(String username){
+        return null;
+    }
+
+    @PostMapping(value = "/search/school")
+    public List<User> searchUserBySchool(String school){
         return null;
     }
 }

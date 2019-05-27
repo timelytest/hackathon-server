@@ -18,9 +18,9 @@ import java.util.Optional;
 
 @Service
 public class QuestionerServiceImpl implements QuestionerService {
-    final QuestionRepository questionRepository;
-    final AnswerRepository answerRepository;
-    final UserRepository userRepository;
+    private final QuestionRepository questionRepository;
+    private final AnswerRepository answerRepository;
+    private final UserRepository userRepository;
     @Autowired
     public QuestionerServiceImpl(QuestionRepository questionRepository,AnswerRepository answerRepository,UserRepository userRepository){
         this.questionRepository=questionRepository;
@@ -34,8 +34,7 @@ public class QuestionerServiceImpl implements QuestionerService {
         question.setEmail(email);
         question.setContent(questionPublishBean.getContent());
         question.setTitle(questionPublishBean.getTitle());
-        DateGetting dateGetting=new DateGetting();
-        question.setDate(dateGetting.getDate());
+        question.setDate(DateGetting.getDate());
         question.setReward(questionPublishBean.getReward());
         question.setClosed(false);
         question.setPath(fileUrl);
@@ -79,6 +78,7 @@ public class QuestionerServiceImpl implements QuestionerService {
             return Message.FAIL.toString();
         }else {
             questionOptional.get().setAnswerId(answerId);
+            questionOptional.get().setClosed(true);
             try {
                 questionRepository.save(questionOptional.get());
             }catch (Exception e){

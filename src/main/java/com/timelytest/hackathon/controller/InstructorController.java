@@ -4,6 +4,7 @@ import com.timelytest.hackathon.entity.Instruction;
 import com.timelytest.hackathon.service.InstructorService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -17,7 +18,8 @@ public class InstructorController {
 
     @PostMapping("/list/accept")
     // 查看接受过的所有的指导请求
-    public List<Instruction> getInstructorInstructionList(@RequestParam String email){
+    public List<Instruction> getInstructorInstructionList(HttpSession session){
+        String email = session.getAttribute("email").toString();
         return instructorService.getInstructorInstructionList(email);
     }
 
