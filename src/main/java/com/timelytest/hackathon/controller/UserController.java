@@ -45,12 +45,12 @@ public class UserController {
 
     @PostMapping(value = "/context")
     public UserContextBean getUserContext(HttpSession session){
-        return null;
+        return userService.getUserContext(session.getAttribute("email").toString());
     }
 
     @PostMapping(value = "/search/username")
     public List<User> searchUserByUsername(String username){
-        return null;
+        return userService.searchUserByUsername(username);
     }
 
     @PostMapping(value = "/search/school")
