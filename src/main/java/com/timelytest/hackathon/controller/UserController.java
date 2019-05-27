@@ -23,18 +23,15 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping(value = "/register")
-    public String register(@RequestBody RegisterBean registerBean, @RequestParam(name = "file") MultipartFile file){
-        String fileUrl = null;
-        if (file != null) {
-            FileSaving fileSaving = new FileSaving();
-            fileUrl = fileSaving.saveFile(file);
-        }
-        return userService.register(registerBean, fileUrl);
+    @PostMapping(value = "register")
+    public String register(@RequestBody RegisterBean registerBean){
+        return userService.register(registerBean,"");
     }
 
-    @PostMapping (value = "/login")
-    public String login(HttpSession session, String email, String password){
+    
+
+    @GetMapping (value = "login")
+    public String login(HttpSession session,String email, String password){
         String result=userService.login(email,password);
         if(result.equals(Message.SUCCESS.toString())){
             session.setAttribute("email",email);
@@ -57,5 +54,4 @@ public class UserController {
     public List<User> searchUserBySchool(String school){
         return userService.searchUserBySchool(school);
     }
-
 }
