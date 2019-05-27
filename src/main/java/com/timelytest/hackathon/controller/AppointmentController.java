@@ -37,8 +37,19 @@ public class AppointmentController {
         String date = DateGetting.getDate();
         return appointmentService.getAvailableAppointmentList(email, date);
     }
+
     @PostMapping("/get")
-    Appointment getAppointmentById(int appointmentId){
+    public Appointment getAppointmentById(int appointmentId){
         return appointmentService.getAppointmentById(appointmentId);
+    }
+
+    @PostMapping("/accept")
+    public String accept(HttpSession session, int appointmentId){
+        return null;
+    }
+
+    @PostMapping("/adopt")
+    public String adopt(HttpSession session, int appointmentId){
+        return null;
     }
 }

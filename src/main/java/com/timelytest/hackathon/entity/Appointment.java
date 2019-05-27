@@ -16,7 +16,9 @@ public class Appointment {
     // 预约类型
     private AppointmentType appointmentType;
     // 提问者email
-    private String email;
+    private String requesterEmail;
+    // 接单者email
+    private String instructorEmail;
     // 问题详情
     private String content;
     // 问题标题
@@ -32,11 +34,12 @@ public class Appointment {
     // 预约状态
     private AppointmentState appointmentState;
 
-    public Appointment() {
-    }
-
     public int getAppointmentId() {
         return appointmentId;
+    }
+
+    public void setAppointmentId(int appointmentId) {
+        this.appointmentId = appointmentId;
     }
 
     public String getType() {
@@ -55,12 +58,20 @@ public class Appointment {
         this.appointmentType = appointmentType;
     }
 
-    public String getEmail() {
-        return email;
+    public String getRequesterEmail() {
+        return requesterEmail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setRequesterEmail(String requesterEmail) {
+        this.requesterEmail = requesterEmail;
+    }
+
+    public String getInstructorEmail() {
+        return instructorEmail;
+    }
+
+    public void setInstructorEmail(String instructorEmail) {
+        this.instructorEmail = instructorEmail;
     }
 
     public String getContent() {
