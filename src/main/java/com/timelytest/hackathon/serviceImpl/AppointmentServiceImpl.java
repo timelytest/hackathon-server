@@ -6,9 +6,11 @@ import com.timelytest.hackathon.entity.User;
 import com.timelytest.hackathon.enumeration.AppointmentState;
 import com.timelytest.hackathon.enumeration.Message;
 import com.timelytest.hackathon.repository.AppointmentRepository;
+import com.timelytest.hackathon.repository.MessageRepository;
 import com.timelytest.hackathon.repository.UserRepository;
 import com.timelytest.hackathon.service.AppointmentService;
 import com.timelytest.hackathon.tool.DateGetting;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -20,10 +22,13 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     private final AppointmentRepository appointmentRepository;
     private final UserRepository userRepository;
+    private final MessageRepository messageRepository;
 
-    public AppointmentServiceImpl(AppointmentRepository appointmentRepository, UserRepository userRepository) {
+    @Autowired
+    public AppointmentServiceImpl(AppointmentRepository appointmentRepository, UserRepository userRepository, MessageRepository messageRepository) {
         this.appointmentRepository = appointmentRepository;
         this.userRepository = userRepository;
+        this.messageRepository = messageRepository;
     }
 
     @Override
