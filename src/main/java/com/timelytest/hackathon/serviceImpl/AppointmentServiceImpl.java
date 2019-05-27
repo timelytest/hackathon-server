@@ -22,13 +22,11 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     private final AppointmentRepository appointmentRepository;
     private final UserRepository userRepository;
-    private final MessageRepository messageRepository;
 
     @Autowired
     public AppointmentServiceImpl(AppointmentRepository appointmentRepository, UserRepository userRepository, MessageRepository messageRepository) {
         this.appointmentRepository = appointmentRepository;
         this.userRepository = userRepository;
-        this.messageRepository = messageRepository;
     }
 
     @Override
