@@ -24,15 +24,13 @@ public class UserController {
     }
 
     @PostMapping(value = "/register")
-    public String register(String email, String username, String password, String school, String studentId, String grade, String major, @RequestParam(name = "file") MultipartFile file){
+    public String register(@RequestBody RegisterBean registerBean, @RequestParam(name = "file") MultipartFile file){
         String fileUrl = null;
         if (file != null) {
             FileSaving fileSaving = new FileSaving();
             fileUrl = fileSaving.saveFile(file);
         }
-        System.out.println(fileUrl);
-        RegisterBean bean = new RegisterBean(email, username, password, school, studentId, grade, major);
-        return userService.register(bean, fileUrl);
+        return userService.register(registerBean, fileUrl);
     }
 
     @PostMapping (value = "/login")
