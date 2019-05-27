@@ -55,7 +55,7 @@ public class UserController {
 
     @PostMapping(value = "/search/school")
     public List<User> searchUserBySchool(String school){
-        return null;
+        return userService.searchUserBySchool(school);
     }
 
 }
