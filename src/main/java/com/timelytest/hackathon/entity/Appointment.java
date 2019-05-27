@@ -1,11 +1,12 @@
 package com.timelytest.hackathon.entity;
 
+import com.timelytest.hackathon.enumeration.AppointmentState;
 import com.timelytest.hackathon.enumeration.AppointmentType;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "appointment")
 public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,6 +29,8 @@ public class Appointment {
     private double reward;
     // 附件路径
     private String path;
+    // 预约状态
+    private AppointmentState appointmentState;
 
     public Appointment() {
     }
@@ -106,5 +109,13 @@ public class Appointment {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public AppointmentState getAppointmentState() {
+        return appointmentState;
+    }
+
+    public void setAppointmentState(AppointmentState appointmentState) {
+        this.appointmentState = appointmentState;
     }
 }
