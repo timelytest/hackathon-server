@@ -22,12 +22,12 @@ public class UserController {
     }
 
     @PostMapping(value = "register")
-    public String register(@RequestBody RegisterBean registerBean, @RequestParam(name = "file") MultipartFile file){
-        return null;
+    public String register(@RequestBody RegisterBean registerBean){
+        return userService.register(registerBean,"");
     }
 
 
-    @PostMapping(value = "register")
+    /*@PostMapping(value = "register")
     public String register(@RequestParam(name = "image") MultipartFile file){
         String fileUrl = null;
         if (file != null) {
@@ -36,9 +36,9 @@ public class UserController {
         }
         System.out.println(fileUrl);
         return fileUrl;
-    }
+    }*/
 
-    @PostMapping (value = "login")
+    @GetMapping (value = "login")
     public String login(HttpSession session,String email, String password){
         String result=userService.login(email,password);
         if(result.equals(Message.SUCCESS.toString())){

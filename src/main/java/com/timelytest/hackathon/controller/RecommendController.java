@@ -4,6 +4,7 @@ import com.timelytest.hackathon.entity.Question;
 import com.timelytest.hackathon.entity.User;
 import com.timelytest.hackathon.service.RecommendService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +21,7 @@ public class RecommendController {
     public RecommendController(RecommendService recommendService){
         this.recommendService=recommendService;
     }
-    @PostMapping("/type")
+    @GetMapping("/type")
     public List<String> getTypeList(){
         List<String> typeList = new ArrayList<>();
         typeList.add("Java");
@@ -36,7 +37,7 @@ public class RecommendController {
         return typeList;
     }
 
-    @PostMapping("/topRewardUser/overall")
+    @GetMapping("/topRewardUser/overall")
     // 返回全局累积获得积分最高的十个人
     public List<User> getTopRewordUserListOverall(){
         return recommendService.getTopRewordUserListOverall();
