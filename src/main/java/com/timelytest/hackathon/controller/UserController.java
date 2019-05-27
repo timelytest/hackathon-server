@@ -28,17 +28,7 @@ public class UserController {
         return userService.register(registerBean,"");
     }
 
-
-    /*@PostMapping(value = "register")
-    public String register(@RequestParam(name = "image") MultipartFile file){
-        String fileUrl = null;
-        if (file != null) {
-            FileSaving fileSaving = new FileSaving();
-            fileUrl = fileSaving.saveFile(file);
-        }
-        System.out.println(fileUrl);
-        return fileUrl;
-    }
+    
 
     @GetMapping (value = "login")
     public String login(HttpSession session,String email, String password){
