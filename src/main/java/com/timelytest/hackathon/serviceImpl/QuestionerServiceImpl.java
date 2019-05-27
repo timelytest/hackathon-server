@@ -78,6 +78,7 @@ public class QuestionerServiceImpl implements QuestionerService {
             return Message.FAIL.toString();
         }else {
             questionOptional.get().setAnswerId(answerId);
+            questionOptional.get().setClosed(true);
             try {
                 questionRepository.save(questionOptional.get());
             }catch (Exception e){

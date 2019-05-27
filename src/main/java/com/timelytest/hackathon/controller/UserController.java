@@ -2,6 +2,7 @@ package com.timelytest.hackathon.controller;
 
 import com.timelytest.hackathon.bean.RegisterBean;
 import com.timelytest.hackathon.bean.UserContextBean;
+import com.timelytest.hackathon.entity.User;
 import com.timelytest.hackathon.enumeration.Message;
 import com.timelytest.hackathon.service.UserService;
 import com.timelytest.hackathon.tool.FileSaving;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -33,18 +35,6 @@ public class UserController {
         return userService.register(bean, fileUrl);
     }
 
-
-//    @PostMapping(value = "register")
-//    public String register(@RequestParam(name = "image") MultipartFile file){
-//        String fileUrl = null;
-//        if (file != null) {
-//            FileSaving fileSaving = new FileSaving();
-//            fileUrl = fileSaving.saveFile(file);
-//        }
-//        System.out.println(fileUrl);
-//        return fileUrl;
-//    }
-
     @PostMapping (value = "login")
     public String login(HttpSession session, String email, String password){
         String result=userService.login(email,password);
@@ -56,7 +46,18 @@ public class UserController {
 
 
     @PostMapping(value = "context")
-    public UserContextBean getUserContext(String email){
+    public UserContextBean getUserContext(HttpSession session){
         return null;
     }
+
+    @PostMapping(value = "search")
+    public List<User> searchUserByUsername(String username){
+        return null;
+    }
+
+    @PostMapping(value = "search")
+    public List<User> searchUserBySchool(String school){
+        return null;
+    }
+
 }

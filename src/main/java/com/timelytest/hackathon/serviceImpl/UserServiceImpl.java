@@ -1,6 +1,7 @@
 package com.timelytest.hackathon.serviceImpl;
 
 import com.timelytest.hackathon.bean.RegisterBean;
+import com.timelytest.hackathon.bean.UserContextBean;
 import com.timelytest.hackathon.entity.PasswordEntity;
 import com.timelytest.hackathon.entity.User;
 import com.timelytest.hackathon.enumeration.Message;
@@ -11,6 +12,7 @@ import com.timelytest.hackathon.tool.MD5Password;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -63,5 +65,21 @@ public class UserServiceImpl implements UserService {
                 return Message.FAIL.toString();
         }
         return Message.SUCCESS.toString();
+    }
+
+    @Override
+    public UserContextBean getUserContext(String email) {
+
+        return null;
+    }
+
+    @Override
+    public List<User> searchUserByUsername(String username) {
+        return null;
+    }
+
+    @Override
+    public List<User> searchUserBySchool(String school) {
+        return null;
     }
 }

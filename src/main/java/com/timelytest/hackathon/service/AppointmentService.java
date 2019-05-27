@@ -4,7 +4,6 @@ import com.timelytest.hackathon.bean.AppointmentPublishBean;
 import com.timelytest.hackathon.entity.Appointment;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Service

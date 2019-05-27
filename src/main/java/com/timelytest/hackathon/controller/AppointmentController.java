@@ -26,16 +26,14 @@ public class AppointmentController {
 
     @PostMapping("/publish")
     public String publish(HttpSession session, @RequestBody AppointmentPublishBean appointmentPublishBean, MultipartFile multipartFile){
-        String email = session.getAttribute("email").toString();
         String fileUrl = new FileSaving().saveFile(multipartFile);
-        return appointmentService.publish(email, appointmentPublishBean, fileUrl);
+        return appointmentService.publish(session.getAttribute("email").toString(), appointmentPublishBean, fileUrl);
     }
 
     @PostMapping("/available")
     public List<Appointment> getAvailableAppointmentList(HttpSession session){
-        String email = session.getAttribute("email").toString();
         String date = DateGetting.getDate();
-        return appointmentService.getAvailableAppointmentList(email, date);
+        return appointmentService.getAvailableAppointmentList(session.getAttribute("email").toString(), date);
     }
 
     @PostMapping("/get")
@@ -45,11 +43,11 @@ public class AppointmentController {
 
     @PostMapping("/accept")
     public String accept(HttpSession session, int appointmentId){
-        return null;
+        return appointmentService.accept(session.getAttribute("email").toString(), appointmentId);
     }
 
     @PostMapping("/adopt")
-    public String adopt(HttpSession session, int appointmentId){
-        return null;
+    public String adopt(int appointmentId){
+        return appointmentService.adopt(appointmentId);
     }
 }
