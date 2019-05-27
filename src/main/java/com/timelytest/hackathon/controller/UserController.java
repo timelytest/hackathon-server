@@ -23,7 +23,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping(value = "register")
+    @PostMapping(value = "/register")
     public String register(String email, String username, String password, String school, String studentId, String grade, String major, @RequestParam(name = "file") MultipartFile file){
         String fileUrl = null;
         if (file != null) {
@@ -35,7 +35,7 @@ public class UserController {
         return userService.register(bean, fileUrl);
     }
 
-    @PostMapping (value = "login")
+    @PostMapping (value = "/login")
     public String login(HttpSession session, String email, String password){
         String result=userService.login(email,password);
         if(result.equals(Message.SUCCESS.toString())){
@@ -45,17 +45,17 @@ public class UserController {
     }
 
 
-    @PostMapping(value = "context")
+    @PostMapping(value = "/context")
     public UserContextBean getUserContext(HttpSession session){
         return null;
     }
 
-    @PostMapping(value = "search")
+    @PostMapping(value = "/search/username")
     public List<User> searchUserByUsername(String username){
         return null;
     }
 
-    @PostMapping(value = "search")
+    @PostMapping(value = "/search/school")
     public List<User> searchUserBySchool(String school){
         return null;
     }
